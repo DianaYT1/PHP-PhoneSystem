@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3fdd86091b3798c319e61dc4cbb873c",
+    "content-hash": "8be4486347c71a8c05279cdd39a453f1",
     "packages": [
         {
             "name": "backpack/basset",
@@ -6482,6 +6482,90 @@
     ],
     "packages-dev": [
         {
+            "name": "backpack/devtools",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Laravel-Backpack/DevTools.git",
+                "reference": "5035861000856cf56429b924d0edf4882d4b76db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.backpackforlaravel.com/dist/backpack/devtools/backpack-devtools-5035861000856cf56429b924d0edf4882d4b76db-zip-db1add.zip",
+                "reference": "5035861000856cf56429b924d0edf4882d4b76db",
+                "shasum": "2b55cba0b64c5ba5d78b4994e0a163bf1f0a02fc"
+            },
+            "require": {
+                "backpack/crud": "^6.0",
+                "backpack/generators": "^4.0",
+                "calebporzio/sushi": "^2.3",
+                "ext-pdo_sqlite": "*",
+                "laravel-shift/blueprint": "^2.7",
+                "livewire/livewire": "^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0",
+                "scrutinizer/ocular": "^1.7",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Backpack\\DevTools\\DevToolsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Backpack\\DevTools\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --testdox"
+                ],
+                "test-failing": [
+                    "vendor/bin/phpunit --order-by=defects --stop-on-failure"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Tabacitu",
+                    "email": "tabacitu@backpackforlaravel.com",
+                    "homepage": "https://backpackforlaravel.com",
+                    "role": "Creator & Maintainer"
+                }
+            ],
+            "description": "An admin UI for generating migrations, models and CRUDs",
+            "homepage": "https://github.com/laravel-backpack/devtools",
+            "keywords": [
+                "Backpack for Laravel",
+                "DevTools",
+                "Generate Migrations",
+                "Generate Models",
+                "Generate Relationships",
+                "Generators",
+                "Laravel"
+            ],
+            "support": {
+                "source": "https://github.com/Laravel-Backpack/DevTools/tree/3.0.4",
+                "issues": "https://github.com/Laravel-Backpack/DevTools/issues"
+            },
+            "time": "2023-11-26T11:32:09+00:00"
+        },
+        {
             "name": "backpack/generators",
             "version": "v4.0.2",
             "source": {
@@ -6550,6 +6634,58 @@
                 "source": "https://github.com/Laravel-Backpack/Generators/tree/v4.0.2"
             },
             "time": "2023-07-24T10:35:15+00:00"
+        },
+        {
+            "name": "calebporzio/sushi",
+            "version": "v2.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/calebporzio/sushi.git",
+                "reference": "932d09781bff75c812541d2d269400fd7d730bab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/calebporzio/sushi/zipball/932d09781bff75c812541d2d269400fd7d730bab",
+                "reference": "932d09781bff75c812541d2d269400fd7d730bab",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.8 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
+                "illuminate/support": "^5.8 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.9 || ^3.1.4",
+                "orchestra/testbench": "3.8.* || 3.9.* || ^4.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "phpunit/phpunit": "^7.5 || ^8.4 || ^9.0 || ^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sushi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "Eloquent's missing \"array\" driver.",
+            "support": {
+                "source": "https://github.com/calebporzio/sushi/tree/v2.4.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/calebporzio",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-10-17T14:42:34+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -6742,6 +6878,106 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
+            "name": "laravel-shift/blueprint",
+            "version": "v2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-shift/blueprint.git",
+                "reference": "bd02171efa47980bca35b4de7ec584955faff64f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-shift/blueprint/zipball/bd02171efa47980bca35b4de7ec584955faff64f",
+                "reference": "bd02171efa47980bca35b4de7ec584955faff64f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.3",
+                "illuminate/console": "^10.0",
+                "illuminate/filesystem": "^10.0",
+                "illuminate/support": "^10.0",
+                "laravel-shift/faker-registry": "^0.3.0",
+                "symfony/yaml": ">=6.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.2",
+                "mockery/mockery": "^1.4.4",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "suggest": {
+                "jasonmccreary/laravel-test-assertions": "Required to use additional assertions in generated tests (^1.0)."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Blueprint\\BlueprintServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Blueprint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An expressive, human readable code generation tool.",
+            "keywords": [
+                "code generation",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-shift/blueprint/issues",
+                "source": "https://github.com/laravel-shift/blueprint/tree/v2.9.0"
+            },
+            "time": "2023-12-08T00:24:07+00:00"
+        },
+        {
+            "name": "laravel-shift/faker-registry",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-shift/faker-registry.git",
+                "reference": "968ab023b6c76c2f67cc474ba6d81fce8ff869a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-shift/faker-registry/zipball/968ab023b6c76c2f67cc474ba6d81fce8ff869a9",
+                "reference": "968ab023b6c76c2f67cc474ba6d81fce8ff869a9",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shift\\Faker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason McCreary",
+                    "email": "jason@pureconcepts.net"
+                }
+            ],
+            "description": "A registry for generating Faker data from a name or data type.",
+            "support": {
+                "issues": "https://github.com/laravel-shift/faker-registry/issues",
+                "source": "https://github.com/laravel-shift/faker-registry/tree/v0.3.0"
+            },
+            "time": "2023-11-24T15:54:02+00:00"
+        },
+        {
             "name": "laravel/pint",
             "version": "v1.13.7",
             "source": {
@@ -6871,6 +7107,80 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2023-12-02T18:26:39+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "6dd3bec8c711cd792742be4620057637e261e6f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/6dd3bec8c711cd792742be4620057637e261e6f7",
+                "reference": "6dd3bec8c711cd792742be4620057637e261e6f7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.0",
+                "illuminate/support": "^10.0",
+                "illuminate/validation": "^10.0",
+                "league/mime-type-detection": "^1.9",
+                "php": "^8.1",
+                "symfony/http-kernel": "^6.2"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^10.0",
+                "laravel/prompts": "^0.1.6",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^8.0",
+                "orchestra/testbench-dusk": "^8.0",
+                "phpunit/phpunit": "^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "support": {
+                "issues": "https://github.com/livewire/livewire/issues",
+                "source": "https://github.com/livewire/livewire/tree/v3.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/livewire",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-12-20T05:34:05+00:00"
         },
         {
             "name": "mockery/mockery",

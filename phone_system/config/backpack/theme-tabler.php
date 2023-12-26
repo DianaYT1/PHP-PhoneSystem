@@ -20,15 +20,15 @@ return [
      * No extra step is required.
      *
      * Possible values: horizontal, horizontal_dark, horizontal_overlap, vertical,
-     * vertical_dark, vertical_transparent (legacy theme), right_vertical, right_vertical_dark, right_vertical_transparent
+     * `vertical_dark`, vertical_transparent (legacy theme), right_vertical, right_vertical_dark, right_vertical_transparent
      */
-    'layout' => 'horizontal_overlap',
+    'layout' => 'right_vertical_dark',
 
     /**
      * Pick a login page layout.
      * Possible values: default, illustration, cover
      */
-    'auth_layout' => 'default', // default, illustration, cover
+    'auth_layout' => 'illustration', // default, illustration, cover
 
     /**
      * Here you can easily load your own extra css styles.
