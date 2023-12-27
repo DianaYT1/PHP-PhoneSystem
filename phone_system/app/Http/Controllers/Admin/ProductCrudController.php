@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ProductRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Validation\Rule;
 
 /**
  * Class ProductCrudController
@@ -23,15 +24,35 @@ class ProductCrudController extends CrudController
     private function getFieldsData($show = FALSE) {
         return [
             [
-                'name'=> 'title',
-                'label' => 'Title',
+                'name'=> 'name',
+                'label' => 'Name',
                 'type'=> 'text'
             ],
             [
+                'name'=> 'model',
+                'label' => 'Model',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'producer',
+                'label' => 'Producer',
+                'type'=> 'text'
+            ],
+            [
+                'name'=> 'year_of_release',
+                'label' => 'Year of release',
+                'attribute' => [
+                    'step' => '2',
+                    'min' => '1876', 
+                    'max' => '2023',
+                ],
+                'validation' => 'required|integer|min:1876|max:2023',
+            ],
+           /* [
                 'name' => 'content',
                 'label' => 'Content',
-                'type' => ($show ? "text": 'summernote')
-            ],
+                'type' => ('text')
+            ],*/
             [    // SelectMultiple = n-n relationship (with pivot table)
                 'label'     => "Tags",
                 'type'      => ($show ? "select": 'select_multiple'),
@@ -59,6 +80,7 @@ class ProductCrudController extends CrudController
      */
     public function setup()
     {
+
         CRUD::setModel(\App\Models\Product::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
         CRUD::setEntityNameStrings('product', 'products');
@@ -76,13 +98,28 @@ class ProductCrudController extends CrudController
     {
         $this->crud->set('show.setFromDb', false);
         $this->crud->addColumns($this->getFieldsData(TRUE));
-       
+
+       CRUD::column('status')->wrapper([
+        'class'=> function($crud,$column,$entry){
+            return match ($entry->status) {
+                'DRAFT' => 'badge bg-warning',
+                default=> 'badge bg-success',
+            };
+        },
+     ]);
+     $selectedModel = request()->input('model');
+
+     // Apply the filter manually if it has been submitted
+     if ($selectedModel) {
+         $this->crud->addClause('where', 'model', $selectedModel);
+     }
+    }
 
         /**
          * Columns can be defined using the fluent syntax:
          * - CRUD::column('price')->type('number');
          */
-    }
+
 
     /**
      * Define what happens when the Create operation is loaded.
@@ -92,7 +129,17 @@ class ProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::field('name')->validationRules('required|min:5');
+        $this->crud->addField([
+            'name' => 'year_of_release',
+            'label' => 'Year of release',
+            'type' => 'number',
+            'attributes' => [
+                'step' => '1',
+                'min' => '1876',
+                'max' => '2023', 
+            'validation' => 'required|integer|min:1876|max:2023',
+            ],
+        ]);
 
     }
 
@@ -105,6 +152,23 @@ class ProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+
+        $this->crud->addField([
+            'name' => 'year_of_release',
+            'label' => 'Year of release',
+            'type' => 'number',
+            'attributes' => [
+                'step' => '1',
+                'min' => '1876',
+                'max' => '2023', 
+            ],
+            'validation' => [
+                Rule::requiredIf(!$this->crud->getRequest()->has('status') || $this->crud->getRequest()->input('status') !== 'DRAFT'),
+                'integer',
+                'min:1876',
+                'max:2023',
+            ],
+        ]);
     }
 
     protected function setupShowOperation()

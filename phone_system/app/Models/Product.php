@@ -31,6 +31,12 @@ class Product extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    public function getYearOfReleaseAttribute($value)
+    {
+        return (int) $value;
+    }
+
     public static function boot()
     {
         parent::boot();

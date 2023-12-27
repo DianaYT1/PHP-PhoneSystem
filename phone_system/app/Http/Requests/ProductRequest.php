@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
+           // 'year_of_release' => 'required|min:1876|max:2023'
         ];
     }
 
