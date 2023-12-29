@@ -18,7 +18,7 @@ return [
     // and choosing that view_namespace instead of the default one. Backpack will load a file from there
     // if it exists, otherwise it will load it from the fallback namespace.
 
-    'view_namespace' => 'backpack.theme-tabler::',
+    'view_namespace' => 'backpack.theme-coreuiv2::',
     'view_namespace_fallback' => 'backpack.theme-tabler::',
 
     /*
@@ -86,7 +86,7 @@ return [
     // ---------
 
     // Show "Getting Started with Backpack" info block?
-    'show_getting_started' => env('APP_ENV') == 'local',
+    'show_getting_started' => env('APP_ENV') == false,
 
     // -------------
     // GLOBAL STYLES

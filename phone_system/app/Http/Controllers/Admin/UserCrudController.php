@@ -19,6 +19,17 @@ class UserCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+   /* public function dashboard()
+    {
+        // Fetch the count of registered users from the database
+        $registeredUsersCount = User::count();
+
+        // Pass the count to the view
+        return view('vendor/backpack/crud/src/resources/views/ui/dashboard', [
+            'registeredUsersCount' => $registeredUsersCount,
+        ]);
+    }*/
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
