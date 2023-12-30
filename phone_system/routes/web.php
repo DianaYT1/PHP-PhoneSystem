@@ -16,7 +16,7 @@ use App\Http\Controllers\TemplateController;
 |
 */
 
-Route::get('/', [TemplateController::class, 'index']);
+//Route::get('/', [TemplateController::class, 'index']);
 
 /*Route::group([
     'prefix' => config('backpack.base.route_prefix', 'admin'),
@@ -29,3 +29,5 @@ Route::get('/', [TemplateController::class, 'index']);
     Route::get('/dashboard', [UserCrudController::class, 'dashboard']);
     
 });*/
+
+Route::get('/', [TemplateController::class, 'view']);
