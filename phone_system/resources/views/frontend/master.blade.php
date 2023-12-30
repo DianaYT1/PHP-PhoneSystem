@@ -78,7 +78,7 @@ https://templatemo.com/tm-574-mexant
       </div>
       
   <!-- ***** Main Banner Area End ***** -->
-
+ @yield('content')
  @yield('footer')
 
   <!-- Scripts -->

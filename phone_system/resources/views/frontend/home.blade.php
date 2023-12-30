@@ -1,5 +1,33 @@
 @extends('frontend.master')
 
+@section('content')
+<h1 align="center">Products</h1>
+<table border="1 px" align="center">
+
+  <tr align="center">
+    <td>Name</td>
+    <td>Model</td>
+    <td>Producer</td>
+    <td>Year of release</td>
+    <td>Product Image</td>
+  </tr>
+
+  @foreach($data as $product)
+  <tr align="center">
+    <td width="300">{{$product->name}}</td>
+    <td>{{$product->model}}</td>
+    <td>{{$product->producer}}</td>
+    <td width="300">{{$product->year_of_release}}</td>
+    <td>
+
+    <img height="150" width="200" src="{{ asset('storage/products/' . $product->image) }}">
+    
+    </td>
+  </tr>
+  @endforeach
+
+</table>
+@endsection
 @section('footer')
 
 <footer>
