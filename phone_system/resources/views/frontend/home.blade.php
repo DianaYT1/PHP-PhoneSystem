@@ -1,32 +1,55 @@
 @extends('frontend.master')
 
-@section('content')
-<h1 align="center">Products</h1>
-<table border="1 px" align="center">
+@section('phones')
+    <h1 align="center">Products</h1>
+    <div style="text-align: center; margin-bottom: 20px; border-color: blue;">
+    <form action="{{ route('search') }}" method="GET" class="search-form">
+    @csrf
+    <input type="text" name="query" placeholder="Търсене...">
+    </form>
+</div>
+    <main class="table" id="phonesList">
 
-  <tr align="center">
-    <td>Name</td>
-    <td>Model</td>
-    <td>Producer</td>
-    <td>Year of release</td>
-    <td>Product Image</td>
-  </tr>
+    <table border="1 px" align="center">
+        <tr align="center">
+            <td>Name</td>
+            <td>Model</td>
+            <td>Producer</td>
+            <td>Year of release</td>
+            <td>Product Image</td>
+        </tr>
 
-  @foreach($data as $product)
-  <tr align="center">
-    <td width="300">{{$product->name}}</td>
-    <td>{{$product->model}}</td>
-    <td>{{$product->producer}}</td>
-    <td width="300">{{$product->year_of_release}}</td>
-    <td>
+        @foreach($phones as $product)
+        <tr align="center">
+            <td width="300">{{$product->name}}</td>
+            <td>{{$product->model}}</td>
+            <td>{{$product->producer}}</td>
+            <td width="300">{{$product->year_of_release}}</td>
+            <td>
+                <img height="150" width="200" src="{{ $product->image }}">
+            </td>
+        </tr>
+        @endforeach
 
-    <img height="150" width="200" src="{{ asset('storage/products/' . $product->image) }}">
-    
-    </td>
-  </tr>
-  @endforeach
+    </table>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    let searchForm = document.querySelector('.search-form');
+    let phonesList = document.getElementById('phonesList');
 
-</table>
+    searchForm.addEventListener('input', function () {
+        let searchTerm = searchForm.querySelector('input[name="query"]').value;
+
+        fetch(/search?query=${searchTerm})
+            .then(response => response.text())
+            .then(data => {
+              phonesList.innerHTML = data;
+            });
+    });
+});
+</script>
+
 @endsection
 @section('footer')
 
