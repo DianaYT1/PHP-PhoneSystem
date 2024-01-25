@@ -7,8 +7,9 @@
     "require": {
         "php": "^8.1",
         "backpack/crud": "^6.4",
-        "backpack/theme-tabler": "^1.1",
+        "backpack/theme-tabler": "*",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "*",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8"

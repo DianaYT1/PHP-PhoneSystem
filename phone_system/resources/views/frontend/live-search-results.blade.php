@@ -16,7 +16,7 @@
         <td>{{$product->producer}}</td>
         <td width="300">{{$product->year_of_release}}</td>
         <td>
-            <img height="150" width="200" src="{{ asset('storage/products/' . $product->image) }}">
+            <img height="150" width="200" src="{{ $product->image }}">
         </td>
     </tr>
     @endforeach

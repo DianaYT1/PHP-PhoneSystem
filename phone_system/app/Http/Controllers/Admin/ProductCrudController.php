@@ -69,7 +69,7 @@ class ProductCrudController extends CrudController
                 'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
             ],*/
             
-            [
+          [
                 'label' => "Product Image",
                 'name' => "image",
                 'type' => ($show ? 'view' : 'upload'),

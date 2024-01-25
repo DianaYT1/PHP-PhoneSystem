@@ -17,6 +17,7 @@ return new class extends Migration
         $table->text('model');
         $table->text('producer');
         $table->year('year_of_release');
+        $table->string('image')->nullable;
         $table->timestamps();
     });
 }
