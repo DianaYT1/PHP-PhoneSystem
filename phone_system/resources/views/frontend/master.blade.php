@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <title>Phone system</title>
@@ -78,7 +79,8 @@ https://templatemo.com/tm-574-mexant
       </div>
       
   <!-- ***** Main Banner Area End ***** -->
- @yield('content')
+
+ @yield('phones')
  @yield('footer')
 
   <!-- Scripts -->

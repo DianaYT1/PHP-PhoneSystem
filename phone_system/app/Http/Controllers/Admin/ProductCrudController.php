@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -36,13 +39,15 @@ class ProductCrudController extends CrudController
             [
                 'name'=> 'producer',
                 'label' => 'Producer',
-                'type'=> 'text'
+                'type'=> 'text',
+                'validation' => 'required', 
             ],
             [
                 'name'=> 'year_of_release',
                 'label' => 'Year of release',
-                'attribute' => [
-                    'step' => '2',
+                'type' => 'integer',
+                'attributes' => [
+                    'step' => '1',
                     'min' => '1876', 
                     'max' => '2023',
                 ],
@@ -53,7 +58,7 @@ class ProductCrudController extends CrudController
                 'label' => 'Content',
                 'type' => ('text')
             ],*/
-            [    // SelectMultiple = n-n relationship (with pivot table)
+           /* [    // SelectMultiple = n-n relationship (with pivot table)
                 'label'     => "Tags",
                 'type'      => ($show ? "select": 'select_multiple'),
                 'name'      => 'tags', // the method that defines the relationship in your Model
@@ -62,8 +67,9 @@ class ProductCrudController extends CrudController
                 'model'     => "App\Models\Tag", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
-            ],
-            [
+            ],*/
+            
+          [
                 'label' => "Product Image",
                 'name' => "image",
                 'type' => ($show ? 'view' : 'upload'),
@@ -179,4 +185,5 @@ class ProductCrudController extends CrudController
         $this->crud->set('show.setFromDb', false);
         $this->crud->addColumns($this->getFieldsData(TRUE));
     }
+
 }

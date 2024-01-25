@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductCrudController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TemplateController;
 //use App\Http\Controllers\UserCrudController;
@@ -31,3 +32,7 @@ use App\Http\Controllers\TemplateController;
 });*/
 
 Route::get('/', [TemplateController::class, 'view']);
+
+
+Route::get('/search', [TemplateController::class, 'search'])->name('search');
+

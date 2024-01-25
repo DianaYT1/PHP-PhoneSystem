@@ -9,13 +9,26 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        return view('frontend.home');
+        $phones = Product::orderBy('name')->get();
+        return view('frontend.home' , compact('phones'));
     }
 
     public function view()
     {
 
-        $data = product::all();
-        return view('frontend.home',compact('data'));
+        $phones = Product::all();
+        return view('frontend.home',compact('phones'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('query');
+
+        $phones = Product::where('name', 'like', "%$searchTerm%")
+            ->orWhere('name', 'like', "%$searchTerm%")
+            ->orderBy('name')
+            ->get();
+
+        return view('frontend.live-search-results', compact('phones'));
     }
 }
